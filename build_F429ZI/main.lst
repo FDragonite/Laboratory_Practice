@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\8B1D~1\AppData\Local\Temp\ccs9PdgL.s 			page 1
+ARM GAS  C:\Users\8B1D~1\AppData\Local\Temp\ccKg2RJ1.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -27,30 +27,95 @@ ARM GAS  C:\Users\8B1D~1\AppData\Local\Temp\ccs9PdgL.s 			page 1
   24              		.thumb
   25              		.thumb_func
   27              	main:
-  28              	.LFB0:
-   1:Core/Src/main.c **** int main(void){
-  29              		.loc 1 1 15 view -0
+  28              	.LFB130:
+   1:Core/Src/main.c **** //#include <stdint.h>
+   2:Core/Src/main.c **** #include "../Inc/init.h"
+   3:Core/Src/main.c **** 
+   4:Core/Src/main.c **** int main(void){
+  29              		.loc 1 4 15 view -0
   30              		.cfi_startproc
   31              		@ Volatile: function does not return.
   32              		@ args = 0, pretend = 0, frame = 0
   33              		@ frame_needed = 0, uses_anonymous_args = 0
-  34              		@ link register save eliminated.
-  35              	.L2:
-   2:Core/Src/main.c ****     while(1){}
-  36              		.loc 1 2 5 view .LVU1
-  37              		.loc 1 2 14 view .LVU2
-  38              		.loc 1 2 10 view .LVU3
-  39 0000 FEE7     		b	.L2
-  40              		.cfi_endproc
-  41              	.LFE0:
-  43              		.text
-  44              	.Letext0:
-ARM GAS  C:\Users\8B1D~1\AppData\Local\Temp\ccs9PdgL.s 			page 2
+  34 0000 08B5     		push	{r3, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 8
+  37              		.cfi_offset 3, -8
+  38              		.cfi_offset 14, -4
+   5:Core/Src/main.c ****     GPIO_Init_Myself_Macros();
+  39              		.loc 1 5 5 view .LVU1
+  40 0002 FFF7FEFF 		bl	GPIO_Init_Myself_Macros
+  41              	.LVL0:
+   6:Core/Src/main.c ****     GPIO_Init_CMSIS();
+  42              		.loc 1 6 5 view .LVU2
+  43 0006 FFF7FEFF 		bl	GPIO_Init_CMSIS
+  44              	.LVL1:
+  45 000a 07E0     		b	.L2
+  46              	.L6:
+   7:Core/Src/main.c **** 
+   8:Core/Src/main.c ****     while(1){
+   9:Core/Src/main.c ****         SET_BIT(GPIOB->BSRR,GPIO_BSRR_BS_14); //включение светодиода 
+  10:Core/Src/main.c ****         if (BIT_READ(GPIOB_IDR,GPIOB_PIN13)){ //считываем данные с вывода Р�
+  11:Core/Src/main.c ****             BIT_SET(GPIOB_BSRR,GPIOB_PIN7_SET); //включение светодиода, реги
+  47              		.loc 1 11 13 view .LVU3
+ARM GAS  C:\Users\8B1D~1\AppData\Local\Temp\ccKg2RJ1.s 			page 2
+
+
+  48 000c A2F58062 		sub	r2, r2, #1024
+  49 0010 D2F81834 		ldr	r3, [r2, #1048]
+  50 0014 43F08003 		orr	r3, r3, #128
+  51 0018 C2F81834 		str	r3, [r2, #1048]
+  52              	.L2:
+   8:Core/Src/main.c ****         SET_BIT(GPIOB->BSRR,GPIO_BSRR_BS_14); //включение светодиода 
+  53              		.loc 1 8 5 view .LVU4
+   9:Core/Src/main.c ****         if (BIT_READ(GPIOB_IDR,GPIOB_PIN13)){ //считываем данные с вывода Р�
+  54              		.loc 1 9 9 view .LVU5
+  55 001c 094A     		ldr	r2, .L7
+  56 001e 9369     		ldr	r3, [r2, #24]
+  57 0020 43F48043 		orr	r3, r3, #16384
+  58 0024 9361     		str	r3, [r2, #24]
+  10:Core/Src/main.c ****             BIT_SET(GPIOB_BSRR,GPIOB_PIN7_SET); //включение светодиода, реги
+  59              		.loc 1 10 9 view .LVU6
+  10:Core/Src/main.c ****             BIT_SET(GPIOB_BSRR,GPIOB_PIN7_SET); //включение светодиода, реги
+  60              		.loc 1 10 13 is_stmt 0 view .LVU7
+  61 0026 084B     		ldr	r3, .L7+4
+  62 0028 D3F81038 		ldr	r3, [r3, #2064]
+  10:Core/Src/main.c ****             BIT_SET(GPIOB_BSRR,GPIOB_PIN7_SET); //включение светодиода, реги
+  63              		.loc 1 10 12 view .LVU8
+  64 002c 13F4005F 		tst	r3, #8192
+  65 0030 ECD1     		bne	.L6
+  12:Core/Src/main.c ****         }
+  13:Core/Src/main.c ****         else
+  14:Core/Src/main.c ****         {
+  15:Core/Src/main.c ****             BIT_SET(GPIOB_BSRR,GPIOB_PIN7_RESERT); //выключение светодиода, р�
+  66              		.loc 1 15 13 is_stmt 1 view .LVU9
+  67 0032 054A     		ldr	r2, .L7+4
+  68 0034 D2F81834 		ldr	r3, [r2, #1048]
+  69 0038 43F40003 		orr	r3, r3, #8388608
+  70 003c C2F81834 		str	r3, [r2, #1048]
+  71 0040 ECE7     		b	.L2
+  72              	.L8:
+  73 0042 00BF     		.align	2
+  74              	.L7:
+  75 0044 00040240 		.word	1073873920
+  76 0048 00000240 		.word	1073872896
+  77              		.cfi_endproc
+  78              	.LFE130:
+  80              		.text
+  81              	.Letext0:
+  82              		.file 2 "C:/CMPT/Tools/xpack-arm-none-eabi-gcc-13.2.1-1.1-win32-x64/xpack-arm-none-eabi-gcc-13.2.1
+  83              		.file 3 "C:/CMPT/Tools/xpack-arm-none-eabi-gcc-13.2.1-1.1-win32-x64/xpack-arm-none-eabi-gcc-13.2.1
+  84              		.file 4 "CMSIS/Devices/STM32F4xx/Inc/STM32F429xx/stm32f429xx.h"
+  85              		.file 5 "Core/Src/../Inc/init.h"
+ARM GAS  C:\Users\8B1D~1\AppData\Local\Temp\ccKg2RJ1.s 			page 3
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\8B1D~1\AppData\Local\Temp\ccs9PdgL.s:21     .text.main:00000000 $t
-C:\Users\8B1D~1\AppData\Local\Temp\ccs9PdgL.s:27     .text.main:00000000 main
+C:\Users\8B1D~1\AppData\Local\Temp\ccKg2RJ1.s:21     .text.main:00000000 $t
+C:\Users\8B1D~1\AppData\Local\Temp\ccKg2RJ1.s:27     .text.main:00000000 main
+C:\Users\8B1D~1\AppData\Local\Temp\ccKg2RJ1.s:75     .text.main:00000044 $d
 
-NO UNDEFINED SYMBOLS
+UNDEFINED SYMBOLS
+GPIO_Init_Myself_Macros
+GPIO_Init_CMSIS

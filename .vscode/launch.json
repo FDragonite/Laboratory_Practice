@@ -17,7 +17,7 @@
                 "interface/stlink.cfg", 
                 "target/stm32f4x.cfg"
             ],
-            "svdFile": "./STM32F429.svd"
+            "svdFile": "./STMDevices/STM32F429xx/STM32F429.svd"
         }
     ]
 }

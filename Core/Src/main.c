@@ -10,7 +10,7 @@ int main(void) {
 
     while(1){
         if((*(uint32_t*)(0x40020800UL + 0x10UL) & 0x2000UL) != 0){ //нажата ли кнопка 2
-            delay_us(1); //задержка в 1 мл
+            delay_ml(1); //задержка в 1 мл
             if(((*(uint32_t*)(0x40020800UL + 0x10UL) & 0x2000UL) != 0) && past_button_state_2 == 0){ //нажата ли кнопка 2 и была ли не нажата ранее
                 past_button_state_2 = 1;
             }
@@ -31,7 +31,7 @@ int main(void) {
             }
         }
         if((*(uint32_t*)(0x40020400UL + 0x10UL) & 0x02UL) != 0){ //кнопка 1 нажата?
-            delay_us(1); //задержка в 1 мл
+            delay_ml(1); //задержка в 1 мл
             if(((*(uint32_t*)(0x40020400UL + 0x10UL) & 0x02UL) != 0) && past_button_state_1 == 0){
                 past_button_state_1 = 1;
             }

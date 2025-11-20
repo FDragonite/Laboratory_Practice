@@ -16,7 +16,7 @@ void GPIO_Init_Memory(void){
     *(uint32_t*)(0x40020400UL + 0x18UL) |= 0x4081; //Установка единицы в 0-ой, 7-ой и 14-ый биты регистра BSRR
 }
 
-void GPIO_Init_Myself_Macros(void){
+void GPIO_Init_Macros(void){
     SET_BIT(RCC_GPIO_EN, RCC_GPIOB_EN | RCC_GPIOC_EN);
 
     SET_BIT(GPIOB_MODER, GPIOB_PIN0_OUT | GPIOB_PIN7_OUT | GPIOB_PIN14_OUT);
